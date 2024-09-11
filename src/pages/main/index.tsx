@@ -26,7 +26,7 @@ export function Main() {
             />
 
             <MenuLink
-              href="#"
+              href="/saldo-e-extrato"
               icon={CircleDollarSignIcon}
               title="Saldo e Extrato"
             />
