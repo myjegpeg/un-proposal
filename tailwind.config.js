@@ -6,6 +6,7 @@ export default {
     extend: {
       colors: {
         background: '#f1f8fe',
+        whitesmoke: '#eeeeee',
         midnight: {
           light: '#11438a',
           dark: '#062750',

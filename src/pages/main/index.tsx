@@ -31,7 +31,11 @@ export function Main() {
               title="Saldo e Extrato"
             />
 
-            <MenuLink href="#" icon={UserIcon} title="Carteirinha Digital" />
+            <MenuLink
+              href="/carteirinha-digital"
+              icon={UserIcon}
+              title="Carteirinha Digital"
+            />
 
             <MenuLink href="#" icon={WalletCardsIcon} title="Recarga" />
           </div>
