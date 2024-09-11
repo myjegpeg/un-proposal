@@ -15,7 +15,7 @@ export function StudentCard() {
 
   return (
     <div className="bg-midnight-light">
-      <header className="flex justify-between items-center fixed top-0 left-0 h-10 bg-midnight-dark w-full z-10 text-white px-3 shadow-lg">
+      <header className="flex justify-between items-center fixed top-0 left-0 h-12 bg-midnight-dark w-full z-10 text-white px-3 shadow-lg">
         <Link to="/">
           <ChevronLeftIcon className="size-5" />
         </Link>
@@ -24,7 +24,7 @@ export function StudentCard() {
       </header>
 
       <LoadingContainer>
-        <main className="mt-10 min-h-[calc(100vh-40px)] flex flex-col items-center p-4 gap-6 text-white">
+        <main className="mt-12 min-h-[calc(100vh-48px)] flex flex-col items-center p-4 gap-6 text-white">
           {!student && (
             <Link
               to="/saldo-e-extrato"
