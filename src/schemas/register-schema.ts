@@ -2,6 +2,10 @@ import { z } from 'zod'
 
 export const registerSchema = z.object({
   name: z.string().min(1, { message: 'Este campo é obrigatório.' }),
+  photo: z.object({
+    file: z.instanceof(FileList),
+    base64: z.string().optional(),
+  }),
   registrationNumber: z
     .string()
     .min(9, { message: 'Digite uma mátricula válida.' }),

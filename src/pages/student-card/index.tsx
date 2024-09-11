@@ -35,7 +35,15 @@ export function StudentCard() {
           <>
             <img src={Logo} alt="Logo" width={160} height={160} />
 
-            <div className="size-36 bg-white" />
+            {student.photo.base64 ? (
+              <img
+                src={student.photo.base64}
+                alt="Foto do aluno"
+                className="object-cover size-36 border-white border"
+              />
+            ) : (
+              <div className="size-36 bg-white" />
+            )}
 
             <div className="flex flex-col items-center gap-1">
               <h2 className="text-lg">{student.name}</h2>
@@ -72,7 +80,7 @@ export function StudentCard() {
                     </span>
                   </div>
 
-                  <div className="flex flex-col gap-0.5">
+                  <div className="flex flex-col gap-0.5 col-span-2">
                     <span className="font-semibold leading-none">Curso</span>
                     <span className="leading-none">
                       {student.collegeCourse}

@@ -34,10 +34,31 @@ export function Register() {
     },
   })
 
-  function onSubmit(data: RegisterSchema) {
-    storageHandler.setStorage('aluno', data)
+  const { watch, setValue } = form
 
-    toast.success('Aluno salvo com sucesso!')
+  const photoRef = form.register('photo.file')
+  const photoBase64Watch = watch('photo.base64')
+
+  function onSubmit(data: RegisterSchema) {
+    const photoFile = data.photo.file[0]
+
+    if (!photoFile) {
+      toast.error('Algo deu errado com a foto!')
+      return
+    }
+
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      const base64String = reader.result as string
+      setValue('photo.base64', base64String)
+      storageHandler.setStorage<RegisterSchema>('aluno', {
+        ...data,
+        photo: { ...data.photo, base64: base64String },
+      })
+
+      toast.success('Aluno salvo com sucesso!')
+    }
+    reader.readAsDataURL(photoFile)
   }
 
   return (
@@ -56,6 +77,31 @@ export function Register() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="w-full space-y-4"
           >
+            <FormField
+              control={form.control}
+              name="photo.file"
+              render={() => {
+                return (
+                  <FormItem>
+                    <FormLabel>Foto</FormLabel>
+                    {!!photoBase64Watch && (
+                      <div className="w-full flex items-center justify-center">
+                        <img
+                          src={photoBase64Watch}
+                          alt="Foto do aluno"
+                          className="object-cover size-36 border-black border"
+                        />
+                      </div>
+                    )}
+                    <FormControl>
+                      <Input type="file" accept="image/*" {...photoRef} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )
+              }}
+            />
+
             <FormField
               control={form.control}
               name="name"
