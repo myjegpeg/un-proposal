@@ -10,7 +10,7 @@ import { MenuLink } from './components/menu-link'
 export function Main() {
   return (
     <div className="bg-background">
-      <header className="flex justify-between items-center fixed top-0 left-0 h-10 bg-midnight-dark w-full z-10 text-white px-3">
+      <header className="flex justify-between items-center fixed top-0 left-0 h-10 bg-midnight-dark w-full z-10 text-white px-3 shadow-lg">
         <MenuIcon className="size-5" />
       </header>
 
