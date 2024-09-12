@@ -4,10 +4,10 @@ import { Separator } from '@/components/ui/separator'
 
 import { LoadingContainer } from '@/components/loading-container'
 import { RegisterSchema } from '@/schemas/register-schema'
-import { storageHandler } from '@/utils/storageHandler'
+import { storageHandler } from '@/utils/storage-handler'
+import { unavailableMessage } from '@/utils/unavailable-message'
 import { ChevronLeftIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { toast } from 'sonner'
 import { QrCode } from './components/qr-code'
 
 export function StudentCard() {
@@ -97,10 +97,7 @@ export function StudentCard() {
 
                 <div className="bg-whitesmoke rounded-2xl px-3 py-2 text-center flex flex-col text-black text-xs">
                   <span>Valide o código gerado utilizando o aplicativo</span>
-                  <span
-                    className="font-semibold"
-                    onClick={() => toast.error('Link inválido!')}
-                  >
+                  <span className="font-semibold" onClick={unavailableMessage}>
                     Validador Carteirinha UFF
                   </span>
                 </div>

@@ -10,7 +10,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { RegisterSchema, registerSchema } from '@/schemas/register-schema'
 import { cpfMask, numericMask } from '@/utils/masks'
-import { storageHandler } from '@/utils/storageHandler'
+import { storageHandler } from '@/utils/storage-handler'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ChevronLeftIcon, SaveIcon } from 'lucide-react'
 import { useForm } from 'react-hook-form'

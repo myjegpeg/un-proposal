@@ -10,7 +10,16 @@ export function setStorage<T = unknown>(key: string, value: T) {
   window.localStorage.setItem(`un-proposal:${key}`, data)
 }
 
+export function deleteStorage<T = unknown>(key: string) {
+  const lastData = getStorage<T>(`un-proposal:${key}`)
+
+  window.localStorage.removeItem(`un-proposal:${key}`)
+
+  return lastData
+}
+
 export const storageHandler = {
   getStorage,
   setStorage,
+  deleteStorage,
 }

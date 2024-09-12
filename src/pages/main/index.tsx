@@ -1,17 +1,17 @@
 import {
   CircleDollarSignIcon,
   ForkKnifeCrossedIcon,
-  MenuIcon,
   UserIcon,
   WalletCardsIcon,
 } from 'lucide-react'
 import { MenuLink } from './components/menu-link'
+import { Sidebar } from './components/sidebar'
 
 export function Main() {
   return (
     <div className="bg-background">
       <header className="flex justify-between items-center fixed top-0 left-0 h-12 bg-midnight-dark w-full z-10 text-white px-3 shadow-lg">
-        <MenuIcon className="size-5" />
+        <Sidebar />
       </header>
 
       <main className="mt-12 min-h-[calc(100vh-48px)] flex flex-col items-center py-8 px-2">
