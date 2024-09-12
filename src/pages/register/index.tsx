@@ -43,7 +43,7 @@ export function Register() {
     const photoFile = data.photo.file[0]
 
     if (!photoFile) {
-      toast.error('Algo deu errado com a foto!')
+      toast.error('Você deve carregar uma foto válida!')
       return
     }
 
