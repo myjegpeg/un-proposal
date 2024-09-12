@@ -40,25 +40,37 @@ export function Register() {
   const photoBase64Watch = watch('photo.base64')
 
   function onSubmit(data: RegisterSchema) {
-    const photoFile = data.photo.file[0]
+    const photoFile = data.photo.file?.[0]
+    const photoBase64 = data.photo.base64
 
-    if (!photoFile) {
+    if (!photoFile && !photoBase64) {
       toast.error('Você deve carregar uma foto válida!')
       return
     }
 
-    const reader = new FileReader()
-    reader.onloadend = () => {
-      const base64String = reader.result as string
-      setValue('photo.base64', base64String)
-      storageHandler.setStorage<RegisterSchema>('aluno', {
-        ...data,
-        photo: { ...data.photo, base64: base64String },
-      })
+    if (photoFile) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const base64String = reader.result as string
+        setValue('photo.base64', base64String)
+        storageHandler.setStorage<RegisterSchema>('aluno', {
+          ...data,
+          photo: { base64: base64String },
+        })
 
-      toast.success('Aluno salvo com sucesso!')
+        toast.success('Aluno salvo com sucesso!')
+      }
+      reader.readAsDataURL(photoFile)
+
+      return
     }
-    reader.readAsDataURL(photoFile)
+
+    storageHandler.setStorage<RegisterSchema>('aluno', {
+      ...data,
+      photo: { base64: photoBase64 },
+    })
+
+    toast.success('Aluno salvo com sucesso!')
   }
 
   return (
@@ -94,7 +106,12 @@ export function Register() {
                       </div>
                     )}
                     <FormControl>
-                      <Input type="file" accept="image/*" {...photoRef} />
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        required={false}
+                        {...photoRef}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

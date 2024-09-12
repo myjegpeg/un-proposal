@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const registerSchema = z.object({
   name: z.string().min(1, { message: 'Este campo é obrigatório.' }),
   photo: z.object({
-    file: z.instanceof(FileList),
+    file: z.instanceof(FileList).or(z.undefined()),
     base64: z.string().optional(),
   }),
   registrationNumber: z
