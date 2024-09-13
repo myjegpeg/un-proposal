@@ -41,7 +41,7 @@ export function Sidebar() {
       </SheetTrigger>
       <SheetContent side="left" className="p-0 bg-white border-none">
         {!student && (
-          <div className="py-2 px-4 text-center">
+          <div className="p-4 text-center">
             <Link
               to="/saldo-e-extrato"
               className="underline underline-offset-8 font-medium text-sm"
@@ -53,7 +53,7 @@ export function Sidebar() {
 
         {!!student && (
           <>
-            <SheetHeader className="bg-midnight-dark text-left py-2 px-4 text-white space-y-20">
+            <SheetHeader className="bg-midnight-dark text-left p-4 text-white space-y-20">
               <SheetTitle className="text-white text-base">
                 {student.name}
               </SheetTitle>
