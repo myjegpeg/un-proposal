@@ -39,7 +39,7 @@ export function Sidebar() {
       <SheetTrigger>
         <MenuIcon className="size-5" />
       </SheetTrigger>
-      <SheetContent side="left" className="p-0 bg-white">
+      <SheetContent side="left" className="p-0 bg-white border-none">
         {!student && (
           <div className="py-2 px-4 text-center">
             <Link
