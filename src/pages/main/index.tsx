@@ -1,3 +1,4 @@
+import { unavailableMessage } from '@/utils/unavailable-message'
 import {
   CircleDollarSignIcon,
   ForkKnifeCrossedIcon,
@@ -20,9 +21,9 @@ export function Main() {
         <div className="flex-1 flex items-center justify-center w-full">
           <div className="grid grid-cols-2 gap-4 w-full">
             <MenuLink
-              href="#"
               icon={ForkKnifeCrossedIcon}
               title="Acesso ao RU"
+              onClick={unavailableMessage}
             />
 
             <MenuLink
@@ -37,7 +38,11 @@ export function Main() {
               title="Carteirinha Digital"
             />
 
-            <MenuLink href="#" icon={WalletCardsIcon} title="Recarga" />
+            <MenuLink
+              icon={WalletCardsIcon}
+              title="Recarga"
+              onClick={unavailableMessage}
+            />
           </div>
         </div>
       </main>
